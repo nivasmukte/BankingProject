@@ -44,9 +44,10 @@ public class loginStepDefinitaion {
         loginPage.clickLoginBtn();
     }
     @Then("User logged in successfully")
-    public void user_logged_in_successfully() throws IOException {
+    public void user_logged_in_successfully() throws IOException{
         hooks = new Hooks();
         hooks.screenShot(driver,"loginScreenShot");
+        loginPage.clickLogoutBtn();
     }
 
     @When("user enters invalid username {string} and password {string}")
