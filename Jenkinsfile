@@ -19,20 +19,6 @@ pipeline {
             }
         }
 
-        stage('Publish Reports') {
-            steps {
-                junit 'target/surefire-reports/*.xml'
-
-                publishHTML([
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                  //  reportDir: 'target/cucumber-reports',
-                  //  reportFiles: 'cucumber-html-reports.html',
-                    //reportName: 'Cucumber HTML Report'
-                ])
-            }
-        }
     }
 
     post {
