@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        MAVEN_HOME = tool 'Maven-3.9.6' // Make sure this matches your Maven config
+        MAVEN_HOME = tool 'Maven-3.8.8' // Make sure this matches your Maven config
         PATH = "${MAVEN_HOME}/bin:${env.PATH}"
     }
 
