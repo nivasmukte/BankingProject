@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        MAVEN_HOME = tool 'maven-3.8.8' // Make sure this matches your Maven config
+        MAVEN_HOME = tool 'Maven-3.8.8' // Make sure this matches your Maven config
         PATH = "${MAVEN_HOME}/bin:${env.PATH}"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/yourusername/your-repo.git'
+                git branch: 'main', url: 'https://github.com/nivasmukte/BankingProject.git'
             }
         }
 
