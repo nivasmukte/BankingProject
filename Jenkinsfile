@@ -15,7 +15,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'mvn clean test'
+                bat '"C:\\Program Files\\apache-maven-3.8.8-bin\\apache-maven-3.8.8\\bin\\mvn.cmd" clean test'
             }
         }
 
