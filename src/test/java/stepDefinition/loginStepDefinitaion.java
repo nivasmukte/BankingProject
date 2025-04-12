@@ -49,4 +49,17 @@ public class loginStepDefinitaion {
         hooks.screenShot(driver,"loginScreenShot");
     }
 
+    @When("user enters invalid username {string} and password {string}")
+    public void userEntersInvalidUsernameAndPassword(String userName, String Password) {
+        loginPage = new LoginPage(driver);
+        loginPage.enterCredentials(userName,Password);
+        loginPage.clickLoginBtn();
+        driver.switchTo().alert().accept();
+    }
+
+    @Then("Uesr not able to login")
+    public void uesrNotAbleToLogin() throws IOException {
+        hooks = new Hooks();
+        hooks.screenShot(driver,"login error screenshot");
+    }
 }
