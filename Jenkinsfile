@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        MAVEN_HOME = tool 'Maven-3.8.8'  // Must match what you named it in Jenkins
+        MAVEN_HOME = tool 'Maven-3.9.6' // Make sure this matches your Maven config
         PATH = "${MAVEN_HOME}/bin:${env.PATH}"
     }
 
@@ -15,7 +15,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'mvn clean verify'
+                sh 'mvn clean test'
             }
         }
 
@@ -23,8 +23,10 @@ pipeline {
             steps {
                 junit 'target/surefire-reports/*.xml'
 
-                // For Cucumber HTML Reports
                 publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
                     reportDir: 'target/cucumber-reports',
                     reportFiles: 'cucumber-html-reports.html',
                     reportName: 'Cucumber HTML Report'
@@ -35,10 +37,10 @@ pipeline {
 
     post {
         success {
-            echo "✅ Tests Passed"
+            echo "✅ Build and tests succeeded!"
         }
         failure {
-            echo "❌ Tests Failed"
+            echo "❌ Something failed during the build or tests!"
         }
     }
 }
